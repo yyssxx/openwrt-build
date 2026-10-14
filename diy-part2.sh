@@ -12,3 +12,11 @@
 
 # lean-lede 默认已带 Argon 主题，如需设为默认主题可取消注释
 # sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+# node：feed 默认编 v12，在新编译机上编不过，直接改成默认 v22
+
+NODE_MK="feeds/packages/lang/node/Makefile"
+if [ -f "$NODE_MK" ]; then
+  sed -i 's/PKG_VERSION:=v12.22.12/PKG_VERSION:=v22.23.0/' "$NODE_MK"
+  sed -i 's|PATCH_DIR:=./patches/v12.x|PATCH_DIR:=./patches/v22.x|' "$NODE_MK"
+  sed -i 's/PKG_HASH:=bc42b7f8495b9bfc7f7850dd180bb02a5bdf139cc232b8c6f02a6967e20714f2/PKG_HASH:=3acfae100c7b855a4c76520ee0f95cadcace3f4254f16b7d4887f178fc95d4a0/' "$NODE_MK"
+fi
