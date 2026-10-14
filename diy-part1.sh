@@ -6,7 +6,6 @@
 
 # helloworld：ssr-plus、xray-core、hysteria、ipt2socks、naiveproxy、
 # frpc/frps、nps、v2ray-server 等（.config 里大量包依赖此源，必须保留）
-echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
 
 # 示例：添加 OpenClash（去掉注释即启用）
 # echo 'src-git openclash https://github.com/vernesong/OpenClash' >> feeds.conf.default
