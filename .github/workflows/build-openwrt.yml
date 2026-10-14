@@ -43,6 +43,8 @@ jobs:
         sudo -E apt-get -qq autoremove --purge -y
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
         df -hT
 
     - name: Clone source code
