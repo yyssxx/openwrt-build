@@ -73,6 +73,16 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
         make defconfig
 
+    - name: Fix node default version
+      run: |
+        cd openwrt
+        NODE_MK="feeds/packages/lang/node/Makefile"
+        if [ -f "$NODE_MK" ]; then
+          sed -i 's/PKG_VERSION:=v12.22.12/PKG_VERSION:=v22.23.0/' "$NODE_MK"
+          sed -i 's|PATCH_DIR:=./patches/v12.x|PATCH_DIR:=./patches/v22.x|' "$NODE_MK"
+          sed -i 's/PKG_HASH:=bc42b7f8495b9bfc7f7850dd180bb02a5bdf139cc232b8c6f02a6967e20714f2/PKG_HASH:=3acfae100c7b855a4c76520ee0f95cadcace3f4254f16b7d4887f178fc95d4a0/' "$NODE_MK"
+        fi
+
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: github.event.inputs.ssh == 'true'
@@ -102,17 +112,18 @@ jobs:
         echo -e "$(nproc) thread compile"
         set -o pipefail
         make -j$(nproc) 2>&1 | tee build.log || make -j1 2>&1 | tee -a build.log || make -j1 V=s 2>&1 | tee -a build.log
-            - name: Report failing package
+        echo "status=success" >> $GITHUB_OUTPUT
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+
+    - name: Report failing package
       if: failure()
       run: |
         cd openwrt
         grep -hE 'ERROR: package/[^ ]+ failed to build' build.log 2>/dev/null | head -10 | while IFS= read -r line; do
           echo "::error::$line"
         done
-        echo "status=success" >> $GITHUB_OUTPUT
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
     - name: Check space usage
       if: (!cancelled())
@@ -149,3 +160,4 @@ jobs:
         artifacts: "${{ env.FIRMWARE }}/*"
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
+
