@@ -39,7 +39,7 @@ jobs:
           libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp \
           nano ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
           qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget \
-          xml-parser xsltproc zlib1g-dev
+          libxml-parser-perl xsltproc zlib1g-dev
         sudo -E apt-get -qq autoremove --purge -y
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
