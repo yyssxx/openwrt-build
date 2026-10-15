@@ -26,7 +26,7 @@
 
 ## 说明
 
-- 源码地址：https://github.com/Lienol/lean-lede（可在 yml 的 `REPO_URL` 里换）
+- 源码地址：https://github.com/coolsnowwolf/lede
 - 默认 target：ramips/mt7621，设备 d-team_newifi-d2（Newifi D2）
 - 已加 helloworld feed（ssr-plus、xray 等依赖）
 - 已加 USB 网络共享：安卓 RNDIS/CDC + 苹果 ipheth/usbmuxd
