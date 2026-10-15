@@ -1,6 +1,6 @@
 # OpenWrt 云编译（lean-lede）
 
-用 GitHub Actions 编译 lean-lede 固件，不用自己机器。
+用 GitHub Actions 云编译 lean-lede 固件.
 
 ## 使用方法
 
