@@ -4,10 +4,9 @@
 
 ## 使用方法
 
-1. 在 GitHub 建一个**公开**仓库（公开库 Actions 分钟数无限）
-2. 把本目录所有文件 push 到仓库根目录（注意 `.github/` 是隐藏目录，别漏了）
-3. 打开仓库的 **Actions** 页面 → 左侧选 **Build OpenWrt (lean-lede)** → **Run workflow**
-4. 等 1~2 小时（mt7621 包量中等），编完在页面底部 **Artifacts** 下载固件，或去 **Releases** 下载
+1. 在 GitHub 建一个**公开**仓库
+2. 把目录所有文件 push 到仓库根目录
+3. 打开 **Actions** 页面 → 左侧选 **Build OpenWrt (lean-lede)** → **Run workflow**
 
 ## 文件说明
 
@@ -31,4 +30,4 @@
 - 已加 helloworld feed（ssr-plus、xray 等依赖）
 - 已加 USB 网络共享：安卓 RNDIS/CDC + 苹果 ipheth/usbmuxd
 - 构建缓存了 dl 目录，改配置后重编会快很多
-- workflow 里有个 SSH 调试开关（Run workflow 时填 true），编挂了可以连上去看
+- workflow 里有个 SSH 调试开关（Run workflow 时填 true）
