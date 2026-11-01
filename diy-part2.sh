@@ -20,3 +20,11 @@ if [ -f "$NODE_MK" ]; then
   sed -i 's|PATCH_DIR:=./patches/v12.x|PATCH_DIR:=./patches/v22.x|' "$NODE_MK"
   sed -i 's/PKG_HASH:=bc42b7f8495b9bfc7f7850dd180bb02a5bdf139cc232b8c6f02a6967e20714f2/PKG_HASH:=3acfae100c7b855a4c76520ee0f95cadcace3f4254f16b7d4887f178fc95d4a0/' "$NODE_MK"
 fi
+
+# xray-core：coolsnowwolf/packages 写的是 26.10.29，但上游已撤版（只有 26.10.21 → 26.10.31），
+# 下载必 404。这里锁定到官方 openwrt/packages 在用的 26.10.21（哈希已实测一致 2026-11-01）
+XRAY_MK="feeds/packages/net/xray-core/Makefile"
+if [ -f "$XRAY_MK" ] && grep -q 'PKG_VERSION:=26.10.29' "$XRAY_MK"; then
+  sed -i 's/PKG_VERSION:=26.10.29/PKG_VERSION:=26.10.21/' "$XRAY_MK"
+  sed -i 's/^PKG_HASH:=.*/PKG_HASH:=44ef4874529a03848c90f1fdcfb763350fbc5f1de741ec90e0024d651df25650/' "$XRAY_MK"
+fi
