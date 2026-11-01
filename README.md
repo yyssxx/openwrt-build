@@ -1,12 +1,6 @@
 # OpenWrt 云编译（lean-lede）
 
-用 GitHub Actions 云编译 lean-lede 固件.
-
-## 使用方法
-
-1. 在 GitHub 建一个**公开**仓库
-2. 把目录所有文件 push 到仓库根目录
-3. 打开 **Actions** 页面 → 左侧选 **Build OpenWrt (lean-lede)** → **Run workflow**
+用 GitHub Actions 编译 lean-lede 固件.
 
 ## 文件说明
 
