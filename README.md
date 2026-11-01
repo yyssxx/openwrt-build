@@ -24,7 +24,7 @@
 - 常见插件 feed：OpenClash（`vernesong/OpenClash`）、helloworld（`fw876/helloworld`），diy-part1.sh 里有注释示例
 
 ## 说明
-
+- 默认：192.168.10.1，root/password
 - 源码地址：https://github.com/coolsnowwolf/lede
 - 默认 target：ramips/mt7621，设备 d-team_newifi-d2（Newifi D2）
 - 已加 helloworld feed（ssr-plus、xray 等依赖）
