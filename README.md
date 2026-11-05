@@ -7,8 +7,8 @@
 | 文件 | 作用 |
 |---|---|
 | `.github/workflows/build-openwrt.yml` | 编译 workflow，定义全部步骤 |
-| `.config` | 编译配置：目标设备 + 软件包，改这里换设备/加插件 |
-| `diy-part1.sh` | 加第三方 feed 源（编译前） |
+| `.config` | 编译配置：目标设备 + 软件包 |
+| `diy-part1.sh` | 加第三方 feed 源 |
 | `diy-part2.sh` | 改默认配置：管理 IP、主机名等 |
 
 ## 换目标设备 / 加插件
