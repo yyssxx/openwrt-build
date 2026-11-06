@@ -9,3 +9,7 @@
 
 # 示例：添加 OpenClash（去掉注释即启用）
 # echo 'src-git openclash https://github.com/vernesong/OpenClash' >> feeds.conf.default
+
+echo 'src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git' >> feeds.conf.default
+echo 'src-git passwall2 https://github.com/Openwrt-Passwall/openwrt-passwall2.git' >> feeds.conf.default
+
