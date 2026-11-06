@@ -20,7 +20,6 @@
 ## 说明
 - 默认：192.168.10.1，root/password
 - 源码地址：https://github.com/coolsnowwolf/lede
-- 默认 target：ramips/mt7621，设备 d-team_newifi-d2（Newifi D2）
 - 已加 helloworld feed（ssr-plus、xray 等依赖）
 - 构建缓存了 dl 目录，改配置后重编会更快
 - workflow 里有 SSH 调试开关（Run workflow 时填 true）
