@@ -4,6 +4,15 @@
 # 用途：修改默认配置（IP、主机名、主题等）
 #
 
+# 预置 erofs-utils 源码包（2026-11-15 config-13 首炉实证）：lede 锁的 erofs-utils 1.8.10
+# 只在 git.kernel.org 有，Actions 机器连它超时、OpenWrt 镜像全 404，构建死在 tools 阶段。
+# 仓库根目录放了一份 Rio 抓取并验过哈希的（sha256 05eb4e…，与 lede 锁定值一致），
+# 这里先塞进 dl/，download 阶段见到文件就跳过，不再赌 kernel.org 的线路。
+if [ -f "$GITHUB_WORKSPACE/erofs-utils-1.8.10.tar.gz" ]; then
+  mkdir -p dl
+  cp "$GITHUB_WORKSPACE/erofs-utils-1.8.10.tar.gz" dl/
+fi
+
 # 修改默认管理 IP：192.168.1.1 -> 192.168.10.1（本文件为 newifi-d2 专用版；AX3000T 用 .31.1，别混）
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
